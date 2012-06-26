@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ActiveSupport::CoreExtensions::String::OutputSafety#add_with_safety
+is_singleton: false
+name: add_with_safety
+params: (other)
+visibility: public

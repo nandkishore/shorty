@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Performs a <tt>get</tt> with the given <tt>key</tt>. If the value does not exist and a block was given, the block will be called and the result saved via <tt>add</tt>.
+- !ruby/struct:SM::Flow::P 
+  body: If you do not provide a block, using this method is the same as using <tt>get</tt>.
+full_name: MemCache#fetch
+is_singleton: false
+name: fetch
+params: (key, expiry = 0, raw = false) {|| ...}
+visibility: public

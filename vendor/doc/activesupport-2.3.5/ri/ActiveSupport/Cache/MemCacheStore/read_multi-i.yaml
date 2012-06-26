@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reads multiple keys from the cache.
+full_name: ActiveSupport::Cache::MemCacheStore#read_multi
+is_singleton: false
+name: read_multi
+params: (*keys)
+visibility: public

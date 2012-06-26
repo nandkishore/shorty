@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Flush the cache from all memcache servers. A non-zero value for <tt>delay</tt> will ensure that the flush is propogated slowly through your memcached server farm. The Nth server will be flushed N*delay seconds from now, asynchronously so this method returns quickly. This prevents a huge database spike due to a total flush all at once.
+full_name: MemCache#flush_all
+is_singleton: false
+name: flush_all
+params: (delay=0)
+visibility: public

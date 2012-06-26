@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add <tt>key</tt> to the cache with value <tt>value</tt> that expires in <tt>expiry</tt> seconds, but only if <tt>key</tt> already exists in the cache. If <tt>raw</tt> is true, <tt>value</tt> will not be Marshalled.
+full_name: MemCache#replace
+is_singleton: false
+name: replace
+params: (key, value, expiry = 0, raw = false)
+visibility: public

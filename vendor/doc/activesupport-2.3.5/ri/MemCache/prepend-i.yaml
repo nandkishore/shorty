@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Prepend - 'add this data to an existing key before existing data' Please note the value is always passed to memcached as raw since it doesn't make a lot of sense to concatenate marshalled data together.
+full_name: MemCache#prepend
+is_singleton: false
+name: prepend
+params: (key, value)
+visibility: public
