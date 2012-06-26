@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>resolve_link (I18n::Backend::Flatten)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/flatten.rb, line 88</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_link</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>)
+          <span class="ruby-identifier">key</span>, <span class="ruby-identifier">locale</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">locale</span>.<span class="ruby-identifier">to_sym</span>
+          <span class="ruby-identifier">links</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">links</span>[<span class="ruby-identifier">locale</span>]
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">links</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+            <span class="ruby-identifier">links</span>[<span class="ruby-identifier">key</span>]
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">link</span> = <span class="ruby-identifier">find_link</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>)
+            <span class="ruby-identifier">store_link</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">key</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">link</span>))
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">key</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

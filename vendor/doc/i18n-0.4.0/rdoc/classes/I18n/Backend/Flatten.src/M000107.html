@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>normalize_flat_keys (I18n::Backend::Flatten)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/flatten.rb, line 18</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">normalize_flat_keys</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">scope</span>, <span class="ruby-identifier">separator</span>)
+        <span class="ruby-identifier">keys</span> = [<span class="ruby-identifier">scope</span>, <span class="ruby-identifier">key</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+        <span class="ruby-identifier">separator</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">default_separator</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">separator</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">FLATTEN_SEPARATOR</span>
+          <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-node">&quot;#{FLATTEN_SEPARATOR}#{separator}&quot;</span>,
+              <span class="ruby-node">&quot;#{SEPARATOR_ESCAPE_CHAR}#{FLATTEN_SEPARATOR}&quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

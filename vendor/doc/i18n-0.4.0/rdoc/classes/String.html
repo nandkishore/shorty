@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: String</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">String</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/i18n/core_ext/string/interpolate_rb.html">
+                lib/i18n/core_ext/string/interpolate.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Extension for <a href="String.html">String</a> class. This feature is
+included in Ruby 1.9 or later but not occur TypeError.
+</p>
+<p>
+<a href="String.html">String</a>#% method which accept &quot;named
+argument&quot;. The translator can know the meaning of the msgids using
+&quot;named argument&quot; instead of %s/%d style.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000007">%</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">INTERPOLATION_PATTERN</td>
+          <td>=</td>
+          <td class="context-item-value">Regexp.union(       /%\{(\w+)\}/,                               # matches placeholders like &quot;%{foo}&quot;       /%&lt;(\w+)&gt;(.*?\d*\.?\d*[bBdiouxXeEfgGcps])/  # matches placeholders like &quot;%&lt;foo&gt;.d&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">INTERPOLATION_PATTERN_WITH_ESCAPE</td>
+          <td>=</td>
+          <td class="context-item-value">Regexp.union(       /%%/,       INTERPOLATION_PATTERN</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">size</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">bytesize</td>
+        </tr>
+      <tr class="top-aligned-row context-row">
+        <td>&nbsp;</td>
+        <td colspan="2" class="context-item-desc">
+For older ruby versions, such as ruby-1.8.5
+
+</td>
+      </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">%</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">interpolate_without_ruby_19_syntax</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="String.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('String.src/M000007.html');return false;">
+          <span class="method-name">%</span><span class="method-args">(args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+% uses self (i.e. the <a href="String.html">String</a>) as a format
+specification and returns the result of applying it to the given arguments.
+In other words it interpolates the given arguments to the string according
+to the formats the string defines.
+</p>
+<p>
+There are three ways to use it:
+</p>
+<ul>
+<li>Using a single argument or Array of arguments.
+
+<p>
+This is the default behaviour of the <a href="String.html">String</a>
+class. See Kernel#sprintf for more details about the format string.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  &quot;%d %s&quot; % [1, &quot;message&quot;]
+  # =&gt; &quot;1 message&quot;
+</pre>
+</li>
+<li>Using a <a href="Hash.html">Hash</a> as an argument and unformatted, named
+placeholders.
+
+<p>
+When you pass a <a href="Hash.html">Hash</a> as an argument and specify
+placeholders with %{foo} it will interpret the hash values as named
+arguments.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  &quot;%{firstname}, %{lastname}&quot; % {:firstname =&gt; &quot;Masao&quot;, :lastname =&gt; &quot;Mutoh&quot;}
+  # =&gt; &quot;Masao Mutoh&quot;
+</pre>
+</li>
+<li>Using a <a href="Hash.html">Hash</a> as an argument and formatted, named
+placeholders.
+
+<p>
+When you pass a <a href="Hash.html">Hash</a> as an argument and specify
+placeholders with %&lt;foo&gt;d it will interpret the hash values as named
+arguments and format the value according to the formatting instruction
+appended to the closing &gt;.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  &quot;%&lt;integer&gt;d, %&lt;float&gt;.1f&quot; % { :integer =&gt; 10, :float =&gt; 43.4 }
+  # =&gt; &quot;10, 43.3&quot;
+</pre>
+</li>
+</ul>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

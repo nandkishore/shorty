@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: I18n::Backend::InterpolationCompiler::Compiler</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">I18n::Backend::InterpolationCompiler::Compiler</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/i18n/backend/interpolation_compiler_rb.html">
+                lib/i18n/backend/interpolation_compiler.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000093">compile_if_an_interpolation</a>&nbsp;&nbsp;
+      <a href="#M000098">compile_interpolation_token</a>&nbsp;&nbsp;
+      <a href="#M000096">compiled_interpolation_body</a>&nbsp;&nbsp;
+      <a href="#M000101">direct_key</a>&nbsp;&nbsp;
+      <a href="#M000106">escape_key_sym</a>&nbsp;&nbsp;
+      <a href="#M000105">escape_plain_str</a>&nbsp;&nbsp;
+      <a href="#M000097">handle_interpolation_token</a>&nbsp;&nbsp;
+      <a href="#M000100">interpolate_key</a>&nbsp;&nbsp;
+      <a href="#M000099">interpolate_or_raise_missing</a>&nbsp;&nbsp;
+      <a href="#M000094">interpolated_str?</a>&nbsp;&nbsp;
+      <a href="#M000103">missing_key</a>&nbsp;&nbsp;
+      <a href="#M000102">nil_key</a>&nbsp;&nbsp;
+      <a href="#M000104">reserved_key</a>&nbsp;&nbsp;
+      <a href="#M000095">tokenize</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TOKENIZER</td>
+          <td>=</td>
+          <td class="context-item-value">/(%%\{[^\}]+\}|%\{[^\}]+\})/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">INTERPOLATION_SYNTAX_PATTERN</td>
+          <td>=</td>
+          <td class="context-item-value">/(%)?(%\{([^\}]+)\})/</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000093.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000093.html');return false;">
+          <span class="method-name">compile_if_an_interpolation</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000094" class="method-detail">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000094.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000094.html');return false;">
+          <span class="method-name">interpolated_str?</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000098.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000098.html');return false;">
+          <span class="method-name">compile_interpolation_token</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000096" class="method-detail">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000096.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000096.html');return false;">
+          <span class="method-name">compiled_interpolation_body</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000101.html');return false;">
+          <span class="method-name">direct_key</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000106.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000106.html');return false;">
+          <span class="method-name">escape_key_sym</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000105.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000105.html');return false;">
+          <span class="method-name">escape_plain_str</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000097.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000097.html');return false;">
+          <span class="method-name">handle_interpolation_token</span><span class="method-args">(interpolation, matchdata)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000100.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000100.html');return false;">
+          <span class="method-name">interpolate_key</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000099" class="method-detail">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000099.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000099.html');return false;">
+          <span class="method-name">interpolate_or_raise_missing</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000103.html');return false;">
+          <span class="method-name">missing_key</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000102.html');return false;">
+          <span class="method-name">nil_key</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000104.html');return false;">
+          <span class="method-name">reserved_key</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <a href="Compiler.src/M000095.html" target="Code" class="method-signature"
+            onclick="popupCode('Compiler.src/M000095.html');return false;">
+          <span class="method-name">tokenize</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Compiler.html#M000095">tokenize</a>(&quot;foo %{bar} baz
+%%{buz}&quot;) # =&gt; [&quot;foo &quot;, &quot;%{bar}&quot;, &quot; baz
+&quot;, &quot;%%{buz}&quot;]
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

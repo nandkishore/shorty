@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>normalize_pluralization (I18n::Backend::Gettext)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/gettext.rb, line 60</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">normalize_pluralization</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+          <span class="ruby-comment cmt"># FIXME po_parser includes \000 chars that can not be turned into Symbols</span>
+          <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\000&quot;</span>, <span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">Gettext</span><span class="ruby-operator">::</span><span class="ruby-constant">PLURAL_SEPARATOR</span>).<span class="ruby-identifier">split</span>(<span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">Gettext</span><span class="ruby-operator">::</span><span class="ruby-constant">PLURAL_SEPARATOR</span>).<span class="ruby-identifier">first</span>
+
+          <span class="ruby-identifier">keys</span> = <span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">Gettext</span>.<span class="ruby-identifier">plural_keys</span>(<span class="ruby-identifier">locale</span>)
+          <span class="ruby-identifier">values</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\000&quot;</span>)
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;invalid number of plurals: #{values.size}, keys: #{keys.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">size</span>
+
+          <span class="ruby-identifier">result</span> = {}
+          <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span>, <span class="ruby-identifier">ix</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">keys</span>[<span class="ruby-identifier">ix</span>]] = <span class="ruby-identifier">value</span> }
+          [<span class="ruby-identifier">key</span>, <span class="ruby-identifier">result</span>]
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

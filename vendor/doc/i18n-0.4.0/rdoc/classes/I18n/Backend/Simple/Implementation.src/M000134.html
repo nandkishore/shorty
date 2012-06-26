@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>store_translations (I18n::Backend::Simple::Implementation)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/simple.rb, line 31</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_translations</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">data</span>, <span class="ruby-identifier">options</span> = {})
+          <span class="ruby-identifier">locale</span> = <span class="ruby-identifier">locale</span>.<span class="ruby-identifier">to_sym</span>
+          <span class="ruby-identifier">translations</span>[<span class="ruby-identifier">locale</span>] <span class="ruby-operator">||=</span> {}
+          <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">deep_symbolize_keys</span>
+          <span class="ruby-identifier">translations</span>[<span class="ruby-identifier">locale</span>].<span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

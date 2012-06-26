@@ -1,0 +1,4 @@
+For Testing
+
+rake environment RAILS_ENV=test db:create
+rake db:test:load

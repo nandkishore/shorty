@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>compiled_interpolation_body (I18n::Backend::InterpolationCompiler::Compiler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/interpolation_compiler.rb, line 50</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compiled_interpolation_body</span>(<span class="ruby-identifier">str</span>)
+          <span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">str</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+            (<span class="ruby-identifier">matchdata</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">INTERPOLATION_SYNTAX_PATTERN</span>)) <span class="ruby-operator">?</span> <span class="ruby-identifier">handle_interpolation_token</span>(<span class="ruby-identifier">token</span>, <span class="ruby-identifier">matchdata</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">escape_plain_str</span>(<span class="ruby-identifier">token</span>)
+          <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">join</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

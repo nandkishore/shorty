@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: available_locales
+comment: 
+constants: []
+
+full_name: I18n::Backend::ActiveRecord::Translation
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: interpolates?
+- !ruby/object:RI::MethodSummary 
+  name: value
+name: Translation
+superclass: "::ActiveRecord::Base"

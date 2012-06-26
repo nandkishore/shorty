@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>lookup (I18n::Backend::KeyValue::Implementation)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/key_value.rb, line 91</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">scope</span> = [], <span class="ruby-identifier">options</span> = {})
+          <span class="ruby-identifier">key</span>   = <span class="ruby-identifier">normalize_flat_keys</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">scope</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:separator</span>])
+          <span class="ruby-identifier">value</span> = <span class="ruby-ivar">@store</span>[<span class="ruby-node">&quot;#{locale}.#{key}&quot;</span>]
+          <span class="ruby-identifier">value</span> = <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+          <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">deep_symbolize_keys</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

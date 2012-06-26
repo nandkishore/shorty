@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: I18n::Backend::KeyValue</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">I18n::Backend::KeyValue</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/i18n/backend/key_value_rb.html">
+                lib/i18n/backend/key_value.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This is a basic backend for key value stores. It receives on initialization
+the store, which should respond to three methods:
+</p>
+<ul>
+<li>store#[](key) - Used to get a value
+
+</li>
+<li>store#[]=(key, value) - Used to set a value
+
+</li>
+<li>store#keys - Used to get all keys
+
+</li>
+</ul>
+<p>
+Since these stores only supports string, all values are converted to JSON
+before being stored, allowing it to also store booleans, hashes and arrays.
+However, this store does not support Procs.
+</p>
+<p>
+As the <a href="ActiveRecord.html">ActiveRecord</a> backend, Symbols are
+just supported when loading translations from the filesystem or through
+explicit store translations.
+</p>
+<p>
+Also, avoid calling I18n.available_locales since it&#8216;s a somehow
+expensive operation in most stores.
+</p>
+<h2>Example</h2>
+<p>
+To setup <a href="../../I18n.html">I18n</a> to use TokyoCabinet in memory
+is quite straightforward:
+</p>
+<pre>
+  require 'rufus/tokyo/cabinet' # gem install rufus-tokyo
+  I18n.backend = I18n::Backend::KeyValue.new(Rufus::Tokyo::Cabinet.new('*'))
+</pre>
+<h2>Performance</h2>
+<p>
+You may make this backend even faster by including the <a
+href="Memoize.html">Memoize</a> module. However, notice that you should
+properly clear the cache if you change values directly in the key-store.
+</p>
+<h2>Subtrees</h2>
+<p>
+In most backends, you are allowed to retrieve part of a translation tree:
+</p>
+<pre>
+  I18n.backend.store_translations :en, :foo =&gt; { :bar =&gt; :baz }
+  I18n.t &quot;foo&quot; #=&gt; { :bar =&gt; :baz }
+</pre>
+<p>
+This backend supports this feature by default, but it slows down the
+storage of new data considerably and makes hard to delete entries. That
+said, you are allowed to disable the storage of subtrees on initialization:
+</p>
+<pre>
+  I18n::Backend::KeyValue.new(@store, false)
+</pre>
+<p>
+This is useful if you are using a <a href="KeyValue.html">KeyValue</a>
+backend chained to a <a href="Simple.html">Simple</a> backend.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="KeyValue/Implementation.html">Implementation</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="KeyValue/Implementation.html" class="link">I18n::Backend::KeyValue::Implementation</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

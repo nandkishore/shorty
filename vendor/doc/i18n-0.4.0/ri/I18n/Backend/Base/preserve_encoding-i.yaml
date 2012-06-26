@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+full_name: I18n::Backend::Base#preserve_encoding
+is_singleton: false
+name: preserve_encoding
+params: (string) {|| ...}
+visibility: protected

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>compute (I18n::Locale::Fallbacks)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/locale/fallbacks.rb, line 87</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compute</span>(<span class="ruby-identifier">tags</span>, <span class="ruby-identifier">include_defaults</span> = <span class="ruby-keyword kw">true</span>)
+        <span class="ruby-identifier">result</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">tags</span>).<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">tags</span> = <span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">Locale</span><span class="ruby-operator">::</span><span class="ruby-constant">Tag</span>.<span class="ruby-identifier">tag</span>(<span class="ruby-identifier">tag</span>).<span class="ruby-identifier">self_and_parents</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_sym</span> }
+          <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">compute</span>(<span class="ruby-ivar">@map</span>[<span class="ruby-identifier">tag</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@map</span>[<span class="ruby-identifier">tag</span>] }
+          <span class="ruby-identifier">tags</span>
+        <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">flatten</span>
+        <span class="ruby-identifier">result</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">defaults</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_defaults</span>
+        <span class="ruby-identifier">result</span>.<span class="ruby-identifier">uniq</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

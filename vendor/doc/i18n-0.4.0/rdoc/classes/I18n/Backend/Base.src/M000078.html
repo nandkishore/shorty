@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>interpolate (I18n::Backend::Base)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/i18n/backend/base.rb, line 151</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">interpolate</span>(<span class="ruby-identifier">locale</span>, <span class="ruby-identifier">string</span>, <span class="ruby-identifier">values</span> = {})
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">empty?</span>
+          
+          <span class="ruby-identifier">preserve_encoding</span>(<span class="ruby-identifier">string</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">string</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">DEPRECATED_INTERPOLATION_SYNTAX_PATTERN</span>) <span class="ruby-keyword kw">do</span>
+              <span class="ruby-identifier">escaped</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_sym</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">escaped</span>
+                <span class="ruby-node">&quot;{{#{key}}}&quot;</span>
+              <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">warn_syntax_deprecation!</span>
+                <span class="ruby-node">&quot;%{#{key}}&quot;</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">values</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">interpolate_lambda?</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">string</span>, <span class="ruby-identifier">key</span>)
+              <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
+              <span class="ruby-identifier">values</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-identifier">string</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">values</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">KeyError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">RESERVED_KEYS_PATTERN</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">ReservedInterpolationKey</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$1</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">string</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">MissingInterpolationArgument</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">values</span>, <span class="ruby-identifier">string</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

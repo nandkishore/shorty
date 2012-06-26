@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: I18n::Backend::Transliterator::HashTransliterator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">I18n::Backend::Transliterator::HashTransliterator</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/i18n/backend/transliterator_rb.html">
+                lib/i18n/backend/transliterator.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A transliterator which accepts a <a href="../../../Hash.html">Hash</a> of
+characters as its translation rule.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000086">new</a>&nbsp;&nbsp;
+      <a href="#M000087">transliterate</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_APPROXIMATIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{           &quot;À&quot;=&gt;&quot;A&quot;, &quot;Á&quot;=&gt;&quot;A&quot;, &quot;Â&quot;=&gt;&quot;A&quot;, &quot;Ã&quot;=&gt;&quot;A&quot;, &quot;Ä&quot;=&gt;&quot;A&quot;, &quot;Å&quot;=&gt;&quot;A&quot;, &quot;Æ&quot;=&gt;&quot;AE&quot;,           &quot;Ç&quot;=&gt;&quot;C&quot;, &quot;È&quot;=&gt;&quot;E&quot;, &quot;É&quot;=&gt;&quot;E&quot;, &quot;Ê&quot;=&gt;&quot;E&quot;, &quot;Ë&quot;=&gt;&quot;E&quot;, &quot;Ì&quot;=&gt;&quot;I&quot;, &quot;Í&quot;=&gt;&quot;I&quot;,           &quot;Î&quot;=&gt;&quot;I&quot;, &quot;Ï&quot;=&gt;&quot;I&quot;, &quot;Ð&quot;=&gt;&quot;D&quot;, &quot;Ñ&quot;=&gt;&quot;N&quot;, &quot;Ò&quot;=&gt;&quot;O&quot;, &quot;Ó&quot;=&gt;&quot;O&quot;, &quot;Ô&quot;=&gt;&quot;O&quot;,           &quot;Õ&quot;=&gt;&quot;O&quot;, &quot;Ö&quot;=&gt;&quot;O&quot;, &quot;×&quot;=&gt;&quot;x&quot;, &quot;Ø&quot;=&gt;&quot;O&quot;, &quot;Ù&quot;=&gt;&quot;U&quot;, &quot;Ú&quot;=&gt;&quot;U&quot;, &quot;Û&quot;=&gt;&quot;U&quot;,           &quot;Ü&quot;=&gt;&quot;U&quot;, &quot;Ý&quot;=&gt;&quot;Y&quot;, &quot;Þ&quot;=&gt;&quot;Th&quot;, &quot;ß&quot;=&gt;&quot;ss&quot;, &quot;à&quot;=&gt;&quot;a&quot;, &quot;á&quot;=&gt;&quot;a&quot;, &quot;â&quot;=&gt;&quot;a&quot;,           &quot;ã&quot;=&gt;&quot;a&quot;, &quot;ä&quot;=&gt;&quot;a&quot;, &quot;å&quot;=&gt;&quot;a&quot;, &quot;æ&quot;=&gt;&quot;ae&quot;, &quot;ç&quot;=&gt;&quot;c&quot;, &quot;è&quot;=&gt;&quot;e&quot;, &quot;é&quot;=&gt;&quot;e&quot;,           &quot;ê&quot;=&gt;&quot;e&quot;, &quot;ë&quot;=&gt;&quot;e&quot;, &quot;ì&quot;=&gt;&quot;i&quot;, &quot;í&quot;=&gt;&quot;i&quot;, &quot;î&quot;=&gt;&quot;i&quot;, &quot;ï&quot;=&gt;&quot;i&quot;, &quot;ð&quot;=&gt;&quot;d&quot;,           &quot;ñ&quot;=&gt;&quot;n&quot;, &quot;ò&quot;=&gt;&quot;o&quot;, &quot;ó&quot;=&gt;&quot;o&quot;, &quot;ô&quot;=&gt;&quot;o&quot;, &quot;õ&quot;=&gt;&quot;o&quot;, &quot;ö&quot;=&gt;&quot;o&quot;, &quot;ø&quot;=&gt;&quot;o&quot;,           &quot;ù&quot;=&gt;&quot;u&quot;, &quot;ú&quot;=&gt;&quot;u&quot;, &quot;û&quot;=&gt;&quot;u&quot;, &quot;ü&quot;=&gt;&quot;u&quot;, &quot;ý&quot;=&gt;&quot;y&quot;, &quot;þ&quot;=&gt;&quot;th&quot;, &quot;ÿ&quot;=&gt;&quot;y&quot;,           &quot;Ā&quot;=&gt;&quot;A&quot;, &quot;ā&quot;=&gt;&quot;a&quot;, &quot;Ă&quot;=&gt;&quot;A&quot;, &quot;ă&quot;=&gt;&quot;a&quot;, &quot;Ą&quot;=&gt;&quot;A&quot;, &quot;ą&quot;=&gt;&quot;a&quot;, &quot;Ć&quot;=&gt;&quot;C&quot;,           &quot;ć&quot;=&gt;&quot;c&quot;, &quot;Ĉ&quot;=&gt;&quot;C&quot;, &quot;ĉ&quot;=&gt;&quot;c&quot;, &quot;Ċ&quot;=&gt;&quot;C&quot;, &quot;ċ&quot;=&gt;&quot;c&quot;, &quot;Č&quot;=&gt;&quot;C&quot;, &quot;č&quot;=&gt;&quot;c&quot;,           &quot;Ď&quot;=&gt;&quot;D&quot;, &quot;ď&quot;=&gt;&quot;d&quot;, &quot;Đ&quot;=&gt;&quot;D&quot;, &quot;đ&quot;=&gt;&quot;d&quot;, &quot;Ē&quot;=&gt;&quot;E&quot;, &quot;ē&quot;=&gt;&quot;e&quot;, &quot;Ĕ&quot;=&gt;&quot;E&quot;,           &quot;ĕ&quot;=&gt;&quot;e&quot;, &quot;Ė&quot;=&gt;&quot;E&quot;, &quot;ė&quot;=&gt;&quot;e&quot;, &quot;Ę&quot;=&gt;&quot;E&quot;, &quot;ę&quot;=&gt;&quot;e&quot;, &quot;Ě&quot;=&gt;&quot;E&quot;, &quot;ě&quot;=&gt;&quot;e&quot;,           &quot;Ĝ&quot;=&gt;&quot;G&quot;, &quot;ĝ&quot;=&gt;&quot;g&quot;, &quot;Ğ&quot;=&gt;&quot;G&quot;, &quot;ğ&quot;=&gt;&quot;g&quot;, &quot;Ġ&quot;=&gt;&quot;G&quot;, &quot;ġ&quot;=&gt;&quot;g&quot;, &quot;Ģ&quot;=&gt;&quot;G&quot;,           &quot;ģ&quot;=&gt;&quot;g&quot;, &quot;Ĥ&quot;=&gt;&quot;H&quot;, &quot;ĥ&quot;=&gt;&quot;h&quot;, &quot;Ħ&quot;=&gt;&quot;H&quot;, &quot;ħ&quot;=&gt;&quot;h&quot;, &quot;Ĩ&quot;=&gt;&quot;I&quot;, &quot;ĩ&quot;=&gt;&quot;i&quot;,           &quot;Ī&quot;=&gt;&quot;I&quot;, &quot;ī&quot;=&gt;&quot;i&quot;, &quot;Ĭ&quot;=&gt;&quot;I&quot;, &quot;ĭ&quot;=&gt;&quot;i&quot;, &quot;Į&quot;=&gt;&quot;I&quot;, &quot;į&quot;=&gt;&quot;i&quot;, &quot;İ&quot;=&gt;&quot;I&quot;,           &quot;ı&quot;=&gt;&quot;i&quot;, &quot;Ĳ&quot;=&gt;&quot;IJ&quot;, &quot;ĳ&quot;=&gt;&quot;ij&quot;, &quot;Ĵ&quot;=&gt;&quot;J&quot;, &quot;ĵ&quot;=&gt;&quot;j&quot;, &quot;Ķ&quot;=&gt;&quot;K&quot;, &quot;ķ&quot;=&gt;&quot;k&quot;,           &quot;ĸ&quot;=&gt;&quot;k&quot;, &quot;Ĺ&quot;=&gt;&quot;L&quot;, &quot;ĺ&quot;=&gt;&quot;l&quot;, &quot;Ļ&quot;=&gt;&quot;L&quot;, &quot;ļ&quot;=&gt;&quot;l&quot;, &quot;Ľ&quot;=&gt;&quot;L&quot;, &quot;ľ&quot;=&gt;&quot;l&quot;,           &quot;Ŀ&quot;=&gt;&quot;L&quot;, &quot;ŀ&quot;=&gt;&quot;l&quot;, &quot;Ł&quot;=&gt;&quot;L&quot;, &quot;ł&quot;=&gt;&quot;l&quot;, &quot;Ń&quot;=&gt;&quot;N&quot;, &quot;ń&quot;=&gt;&quot;n&quot;, &quot;Ņ&quot;=&gt;&quot;N&quot;,           &quot;ņ&quot;=&gt;&quot;n&quot;, &quot;Ň&quot;=&gt;&quot;N&quot;, &quot;ň&quot;=&gt;&quot;n&quot;, &quot;ŉ&quot;=&gt;&quot;'n&quot;, &quot;Ŋ&quot;=&gt;&quot;NG&quot;, &quot;ŋ&quot;=&gt;&quot;ng&quot;,           &quot;Ō&quot;=&gt;&quot;O&quot;, &quot;ō&quot;=&gt;&quot;o&quot;, &quot;Ŏ&quot;=&gt;&quot;O&quot;, &quot;ŏ&quot;=&gt;&quot;o&quot;, &quot;Ő&quot;=&gt;&quot;O&quot;, &quot;ő&quot;=&gt;&quot;o&quot;, &quot;Œ&quot;=&gt;&quot;OE&quot;,           &quot;œ&quot;=&gt;&quot;oe&quot;, &quot;Ŕ&quot;=&gt;&quot;R&quot;, &quot;ŕ&quot;=&gt;&quot;r&quot;, &quot;Ŗ&quot;=&gt;&quot;R&quot;, &quot;ŗ&quot;=&gt;&quot;r&quot;, &quot;Ř&quot;=&gt;&quot;R&quot;, &quot;ř&quot;=&gt;&quot;r&quot;,           &quot;Ś&quot;=&gt;&quot;S&quot;, &quot;ś&quot;=&gt;&quot;s&quot;, &quot;Ŝ&quot;=&gt;&quot;S&quot;, &quot;ŝ&quot;=&gt;&quot;s&quot;, &quot;Ş&quot;=&gt;&quot;S&quot;, &quot;ş&quot;=&gt;&quot;s&quot;, &quot;Š&quot;=&gt;&quot;S&quot;,           &quot;š&quot;=&gt;&quot;s&quot;, &quot;Ţ&quot;=&gt;&quot;T&quot;, &quot;ţ&quot;=&gt;&quot;t&quot;, &quot;Ť&quot;=&gt;&quot;T&quot;, &quot;ť&quot;=&gt;&quot;t&quot;, &quot;Ŧ&quot;=&gt;&quot;T&quot;, &quot;ŧ&quot;=&gt;&quot;t&quot;,           &quot;Ũ&quot;=&gt;&quot;U&quot;, &quot;ũ&quot;=&gt;&quot;u&quot;, &quot;Ū&quot;=&gt;&quot;U&quot;, &quot;ū&quot;=&gt;&quot;u&quot;, &quot;Ŭ&quot;=&gt;&quot;U&quot;, &quot;ŭ&quot;=&gt;&quot;u&quot;, &quot;Ů&quot;=&gt;&quot;U&quot;,           &quot;ů&quot;=&gt;&quot;u&quot;, &quot;Ű&quot;=&gt;&quot;U&quot;, &quot;ű&quot;=&gt;&quot;u&quot;, &quot;Ų&quot;=&gt;&quot;U&quot;, &quot;ų&quot;=&gt;&quot;u&quot;, &quot;Ŵ&quot;=&gt;&quot;W&quot;, &quot;ŵ&quot;=&gt;&quot;w&quot;,           &quot;Ŷ&quot;=&gt;&quot;Y&quot;, &quot;ŷ&quot;=&gt;&quot;y&quot;, &quot;Ÿ&quot;=&gt;&quot;Y&quot;, &quot;Ź&quot;=&gt;&quot;Z&quot;, &quot;ź&quot;=&gt;&quot;z&quot;, &quot;Ż&quot;=&gt;&quot;Z&quot;, &quot;ż&quot;=&gt;&quot;z&quot;,           &quot;Ž&quot;=&gt;&quot;Z&quot;, &quot;ž&quot;=&gt;&quot;z&quot;</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="HashTransliterator.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('HashTransliterator.src/M000086.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(rule = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="HashTransliterator.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('HashTransliterator.src/M000087.html');return false;">
+          <span class="method-name">transliterate</span><span class="method-args">(string, replacement = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
