@@ -12,7 +12,7 @@ class LinksControllerTest < ActionController::TestCase
       post :create, :link => {:link => "https://www.google.co.in/" }
     end
 
-    assert_redirected_to link_path(assigns(:link))
+    assert_redirected_to links_path
   end
 
   test "should not create link for null input" do
@@ -29,7 +29,7 @@ class LinksControllerTest < ActionController::TestCase
   end
 
   test "should show link" do
-    get :show, :id => links(:one).to_param
+    get :show, :id => links(:one).access_token.to_param
     assert_redirected_to(links(:one).link)
   end
 

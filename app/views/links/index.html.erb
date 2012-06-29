@@ -2,17 +2,15 @@
 
 <table>
   <tr>
-    <th>Id</th>
     <th>Link</th>
     <th>Short URL</th>
   </tr>
 
 <% @links.each do |link| %>
   <tr>
-    <td><%=h link.id %>&nbsp</td>
     <td><%=h link.link %>&nbsp</td>
-    <td><%= link_to "http://" + request.env['HTTP_HOST'] + "/#{link.id}", "http://" + request.env['HTTP_HOST'] + "/#{link.id}"%>&nbsp &nbsp &nbsp</td>
-    <td><%= link_to 'Show', link %></td>
+    <td><%= link_to "http://" + request.env['HTTP_HOST'] + "/#{link.access_token}", "http://" + request.env['HTTP_HOST'] + "/#{link.access_token}"%>&nbsp &nbsp &nbsp</td>
+    <td><%= link_to 'Show', link_path(link.access_token) %></td>
     <td><%= link_to 'Edit', edit_link_path(link) %></td>
     <td><%= link_to 'Destroy', link, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
