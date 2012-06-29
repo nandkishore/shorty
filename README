@@ -1,3 +1,7 @@
+A Bitly like Ruby on Rails Application for Shortening URL's with functional test cases
+
+Demo: http://radiant-moon-5578.herokuapp.com/
+
 For Testing
 
 rake environment RAILS_ENV=test db:create
